@@ -7,10 +7,10 @@ is64bit=`getconf LONG_BIT`
 if [ -f "/usr/bin/apt-get" ];then
 	isDebian=`cat /etc/issue|grep Debian`
 	if [ "$isDebian" != "" ];then
-		wget --no-check-certificate -O install.sh https://raw.githubusercontent.com/wangzhe12588/bt59happy/master/install-ubuntu.sh && bash install.sh
+		wget --no-check-certificate -O install.sh https://raw.githubusercontent.com/10133529/freebt59/master/install-ubuntu.sh && bash install.sh
 		exit;
 	else
-		wget --no-check-certificate -O install.sh https://raw.githubusercontent.com/wangzhe12588/bt59happy/master/install-ubuntu.sh && sudo bash install.sh
+		wget --no-check-certificate -O install.sh https://raw.githubusercontent.com/10133529/freebt59/master/install-ubuntu.sh && sudo bash install.sh
 		exit;
 	fi
 fi
@@ -109,11 +109,11 @@ echo '---------------------------------------------';
 echo "Selected download node...";
 get_node_url
 download_Url=$NODE_URL
-btpanel_Url=https://raw.githubusercontent.com/wangzhe12588/bt59happy/master/panel.zip
+btpanel_Url=https://raw.githubusercontent.com/10133529/freebt59/master/panel.zip
 echo "Download node: $download_Url";
 echo '---------------------------------------------';
 setup_path=/www
-port='8888'
+port='48898'
 if [ -f $setup_path/server/panel/data/port.pl ];then
 	port=`cat $setup_path/server/panel/data/port.pl`
 fi
@@ -642,14 +642,14 @@ fi
 if [ "$address" != "SERVER_IP" ];then
 	echo "$address" > $setup_path/server/panel/data/iplist.txt
 fi
-
-curl -sS --connect-timeout 10 -m 60 https://www.bt.cn/Api/SetupCount?type=Linux\&o=$1 > /dev/null 2>&1
-if [ "$1" != "" ];then
-	echo $1 > /www/server/panel/data/o.pl
-	cd /www/server/panel
-	python tools.py o
-fi
-
++----------------------------------------------------------------------
+|curl -sS --connect-timeout 10 -m 60 https://www.bt.cn/Api/SetupCount?type=Linux\&o=$1 > /dev/null 2>&1
+|if [ "$1" != "" ];then
+|	echo $1 > /www/server/panel/data/o.pl
+|	cd /www/server/panel
+|	python tools.py o
+|fi
++----------------------------------------------------------------------
 echo -e "=================================================================="
 echo -e "\033[32mCongratulations! Installed successfully!\033[0m"
 echo -e "=================================================================="
